@@ -1,13 +1,7 @@
-const Table = ({ food, setFood }) => {
-  const deleteFood = (id) => {
-    const oldFood = [...food];
-    const newFood = oldFood.filter((item) => item.id !== id);
+import useFood from "../hooks/useFood";
 
-    //const foodLS = JSON.parse(localStorage.getItem('food'));
-
-    localStorage.setItem("food", JSON.stringify(newFood));
-    setFood(newFood);
-  };
+const Table = () => {
+  const { food, deleteFood } = useFood();
 
   return (
     <>

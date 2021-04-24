@@ -1,32 +1,7 @@
-import { useState } from "react";
+import useFood from "../hooks/useFood";
 
-import { v4 as uuid } from "uuid";
-
-const Form = ({ setFood }) => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-
-  const saveFood = (e) => {
-    e.preventDefault();
-
-    if (!name.trim() || price <= 0) {
-      return alert("Error, All Field Are Required");
-    }
-
-    const food = { id: uuid(), name, price };
-
-    const foodLS = JSON.parse(localStorage.getItem("food"));
-
-    let newFood;
-    if (foodLS) {
-      newFood = [...foodLS, food];
-    } else {
-      newFood = [food];
-    }
-
-    localStorage.setItem("food", JSON.stringify(newFood));
-    setFood(newFood);
-  };
+const Form = () => {
+  const { saveFood, name, price, setName, setPrice } = useFood();
 
   return (
     <>
