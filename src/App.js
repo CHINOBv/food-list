@@ -3,7 +3,7 @@ import Form from "./components/Form";
 import Table from "./components/Table";
 
 function App() {
-  const [food, setFood] = useState([]);
+  const [food, setFood] = useState(JSON.parse(localStorage.getItem("food")));
 
   return (
     <>

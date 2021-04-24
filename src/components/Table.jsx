@@ -3,6 +3,9 @@ const Table = ({ food, setFood }) => {
     const oldFood = [...food];
     const newFood = oldFood.filter((item) => item.id !== id);
 
+    //const foodLS = JSON.parse(localStorage.getItem('food'));
+
+    localStorage.setItem("food", JSON.stringify(newFood));
     setFood(newFood);
   };
 
@@ -18,7 +21,7 @@ const Table = ({ food, setFood }) => {
             </tr>
           </thead>
           <tbody>
-            {food.map((item) => (
+            {food?.map((item) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>{item.price}</td>

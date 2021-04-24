@@ -10,11 +10,22 @@ const Form = ({ setFood }) => {
     e.preventDefault();
 
     if (!name.trim() || price <= 0) {
-      alert("Error, All Field Are Required");
+      return alert("Error, All Field Are Required");
     }
 
     const food = { id: uuid(), name, price };
-    setFood((e) => [...e, food]);
+
+    const foodLS = JSON.parse(localStorage.getItem("food"));
+
+    let newFood;
+    if (foodLS) {
+      newFood = [...foodLS, food];
+    } else {
+      newFood = [food];
+    }
+
+    localStorage.setItem("food", JSON.stringify(newFood));
+    setFood(newFood);
   };
 
   return (
